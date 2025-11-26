@@ -1,4 +1,0 @@
-D:/code/neural-network/build/CMakeFiles/neural_network.dir
-D:/code/neural-network/build/CMakeFiles/test_matrix.dir
-D:/code/neural-network/build/CMakeFiles/edit_cache.dir
-D:/code/neural-network/build/CMakeFiles/rebuild_cache.dir
