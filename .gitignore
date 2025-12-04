@@ -1,0 +1,10 @@
+/build
+
+
+*.o
+*.so
+*.a
+*.log
+
+backpropagation_explanation.txt
+linkedin_post.txt
