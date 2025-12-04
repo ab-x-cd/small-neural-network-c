@@ -1,92 +1,92 @@
-# Réseau de Neurones en C
+# Neural Network (C)
 
-Ce projet est une implémentation simple et éducative d'un réseau de neurones feed-forward écrit en langage C. Il comprend des opérations matricielles de base, un système de suivi de mémoire (`memtrack`), et une implémentation minimale d'un réseau de neurones avec une fonction d'activation ReLU dans la passe avant.
+This repository is a small, educational implementation of a feed-forward neural network written in C. It includes basic matrix operations, a memory tracking helper (`memtrack`), and a minimal neural network implementation with ReLU activation in the forward pass. The network now supports training via backpropagation.
 
-## Utilité
+## Purpose
 
-Ce projet sert principalement à des fins éducatives. Il permet d'apprendre :
-- Les principes fondamentaux des réseaux de neurones artificiels
-- L'implémentation d'opérations matricielles en C
-- La gestion de la mémoire en C
-- L'utilisation de CMake pour la construction de projets C
+This project serves primarily educational purposes. It allows learning:
+- The fundamental principles of artificial neural networks
+- Implementation of matrix operations in C
+- Memory management in C
+- Using CMake for building C projects
 
-Il peut également servir de base pour des expérimentations plus avancées avec les réseaux de neurones.
+It can also serve as a foundation for more advanced experiments with neural networks.
 
-## Intérêts
+## Benefits
 
-- **Pas de dépendances externes** : Le projet utilise uniquement la bibliothèque standard C, ce qui le rend facile à compiler et à exécuter sur n'importe quel système supportant un compilateur C.
-- **Code simple et lisible** : Idéal pour comprendre les mécanismes internes des réseaux de neurones sans abstractions complexes.
-- **Suivi de mémoire intégré** : Le module `memtrack` permet de surveiller l'utilisation de la mémoire, utile pour le débogage et l'optimisation.
-- **Tests inclus** : Des programmes de test simples pour vérifier le bon fonctionnement des opérations matricielles.
-- **Multiplateforme** : Fonctionne sous Windows, Linux et macOS.
+- **No external dependencies**: The project uses only the C standard library, making it easy to compile and run on any system with a C compiler.
+- **Simple and readable code**: Ideal for understanding the internal mechanisms of neural networks without complex abstractions.
+- **Integrated memory tracking**: The `memtrack` module allows monitoring memory usage, useful for debugging and optimization.
+- **Included tests**: Simple test programs to verify matrix operations.
+- **Cross-platform**: Works on Windows, Linux, and macOS.
 
-## Prérequis
+## Prerequisites
 
-- CMake (version 3.10 ou supérieure)
-- Un compilateur C (GCC, Clang, MSVC selon la plateforme)
-- (Optionnel) Ninja pour des compilations plus rapides
+- CMake (>= 3.10)
+- A C compiler (GCC, Clang, MSVC depending on platform)
+- (Optional) Ninja build tool for faster builds
 
-## Installation et Construction
+## Building and Running
 
-Le projet utilise CMake comme système de construction. Voici les instructions pour chaque plateforme :
+The project uses CMake as the build system. Below are platform-specific instructions.
 
 ### Linux
 
-1. Ouvrez un terminal et naviguez vers le répertoire du projet.
+1. Open a terminal and navigate to the project directory.
 
-2. Créez un répertoire de construction et configurez CMake :
+2. Create a build directory and configure CMake:
    ```bash
    mkdir -p build
    cd build
    cmake .. -DCMAKE_BUILD_TYPE=Release
    ```
 
-3. Compilez le projet :
+3. Build the project:
    ```bash
    cmake --build . --config Release
    ```
 
-4. Les exécutables `neural_network` et `test_matrix` seront créés dans le répertoire `build`.
+4. The executables `neural_network` and `test_matrix` will be created in the `build` directory.
 
 ### macOS
 
-Les étapes sont identiques à Linux. Vous pouvez installer les outils nécessaires avec Homebrew :
+Steps are identical to Linux. You can install required tools using Homebrew:
 
 ```bash
 brew install cmake
 ```
 
-Puis suivez les mêmes commandes que pour Linux.
+Then follow the same commands as Linux.
 
 ### Windows
 
-#### Avec Visual Studio (recommandé)
+#### With Visual Studio (recommended)
 
-1. Ouvrez une invite de commandes ou PowerShell en tant qu'administrateur.
+1. Open Command Prompt or PowerShell as administrator.
 
-2. Créez le répertoire de construction :
+2. Create the build directory:
    ```cmd
    mkdir build
    cd build
    ```
 
-3. Configurez avec CMake :
+3. Configure with CMake:
    ```cmd
    cmake .. -G "Visual Studio 17 2022" -A x64
    ```
 
-4. Compilez :
+4. Build:
    ```cmd
    cmake --build . --config Release
    ```
 
-#### Avec Ninja
+#### With Ninja
 
-Si vous préférez utiliser Ninja :
+If you prefer Ninja:
 
-1. Assurez-vous que Ninja est installé et dans le PATH.
+1. Ensure Ninja is installed and in PATH.
 
-2. Configurez et compilez :
+2. Configure and build:
    ```cmd
    mkdir build
    cd build
@@ -94,21 +94,17 @@ Si vous préférez utiliser Ninja :
    cmake --build . --config Release
    ```
 
-Les exécutables `neural_network.exe` et `test_matrix.exe` seront créés dans le répertoire `build\Release` (avec Visual Studio) ou `build` (avec Ninja).
+The executables `neural_network.exe` and `test_matrix.exe` will be created in `build\Release` (with Visual Studio) or `build` (with Ninja).
 
-## Utilisation
+## Usage
 
-Après compilation, vous pouvez exécuter les programmes :
+After building, run the programs:
 
-### Programme principal (`neural_network`)
+### Main Program (`neural_network`)
 
-Ce programme démontre la création et l'utilisation d'un réseau de neurones simple :
+This program demonstrates creating and training a simple neural network on the XOR problem.
 
-- Crée un réseau avec 3 couches (3 entrées, 5 neurones cachés, 2 sorties)
-- Affiche l'utilisation de la mémoire avant et après l'allocation
-- Libère la mémoire
-
-Exécution :
+Run:
 ```bash
 # Linux/macOS
 ./neural_network
@@ -117,11 +113,13 @@ Exécution :
 .\neural_network.exe
 ```
 
-### Tests des matrices (`test_matrix`)
+It will train the network and display test results.
 
-Ce programme teste les opérations d'addition et de multiplication de matrices :
+### Matrix Tests (`test_matrix`)
 
-Exécution :
+This program tests matrix addition and multiplication.
+
+Run:
 ```bash
 # Linux/macOS
 ./test_matrix
@@ -130,41 +128,31 @@ Exécution :
 .\test_matrix.exe
 ```
 
-Le programme affiche "PASSED" ou "FAILED" pour chaque test.
+It prints "PASSED" or "FAILED" for each test.
 
-## Structure du Projet
+## Project Structure
 
-- `include/` : Fichiers d'en-tête (.h)
-  - `matrix.h` : Définitions pour les opérations matricielles
-  - `memtrack.h` : Suivi de l'utilisation mémoire
-  - `network.h` : Structures du réseau de neurones
-- `src/` : Code source (.c)
-  - `main.c` : Programme principal de démonstration
-  - `matrix.c` : Implémentation des opérations matricielles
-  - `memtrack.c` : Implémentation du suivi mémoire
-  - `network.c` : Implémentation du réseau de neurones
-- `tests/` : Programmes de test
-  - `test_matrix.c` : Tests des opérations matricielles
-- `CMakeLists.txt` : Configuration CMake
+- `include/`: Header files for matrix, memtrack, network.
+- `src/`: Implementation files.
+- `tests/`: Simple test programs (currently `test_matrix.c`).
+- `CMakeLists.txt`: Project build configuration.
 
-## Notes Techniques
+## Technical Notes
 
-- Le module `memtrack` encapsule les allocations mémoire pour les matrices, mais le réseau utilise `malloc`/`free` standard. Pour un suivi complet, il faudrait adapter le code du réseau.
-- Les opérations matricielles incluent une vérification basique des dimensions, mais ne gèrent pas les erreurs de manière robuste.
-- La fonction d'activation utilisée est ReLU (Rectified Linear Unit).
-- Les poids sont initialisés avec de petites valeurs aléatoires.
+- The `memtrack` module wraps matrix allocations but the network uses standard `malloc`/`free`. For full tracking, adapt network allocations to use `mt_malloc`/`mt_free`.
+- Matrix operations include basic dimension checks but do not handle errors robustly.
+- The activation function is ReLU (Rectified Linear Unit).
+- Weights are initialized with small random values.
+- Backpropagation uses MSE loss and supports training on custom datasets.
 
-## Contribution
+## Contributing
 
-Les contributions sont les bienvenues ! N'hésitez pas à :
-- Ouvrir des issues pour signaler des bugs ou proposer des améliorations
-- Soumettre des pull requests pour ajouter des fonctionnalités
-- Améliorer la documentation
+Contributions are welcome. Open issues or PRs for bugs, features, or documentation. If adding features that change APIs, update headers and tests accordingly.
 
-## Licence
+## License
 
-Ce projet n'inclut pas de fichier de licence. Si vous souhaitez utiliser ce code, veuillez ajouter une licence appropriée.
+No license file is included. Add an appropriate license if you wish to allow others to use/modify the code.
 
 ---
 
-Petit projet éducatif d'implémentation de réseau de neurones en C.
+Small educational neural network C project.
